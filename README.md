@@ -18,6 +18,8 @@ $ go install github.com/paololazzari/fuzzy-terraform-rm@latest
 $ fuzzy-terraform-rm
 ```
 
+N.B. To select multiple resources at once, use the tab key.
+
 ## How it works
 
 fuzzy-terraform-rm looks at the terraform source (.tf) files and at the terraform state to determine which resources can be removed.
