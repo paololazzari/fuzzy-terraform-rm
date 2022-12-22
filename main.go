@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"bytes"
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -111,6 +112,9 @@ func shellout(command string, silent bool) (string, string, error) {
 
 func main() {
 
+	forceDestroy := flag.Bool("force", false, "If true, do not prompt for confirmation when removing a resource from the state")
+	flag.Parse()
+
 	workingDir := getDir()
 	resourcesAvailableForRemoval := getTerraformResourcesToRemove(workingDir)
 
@@ -129,10 +133,16 @@ func main() {
 
 	reader := bufio.NewReader(os.Stdin)
 	for _, resourceToRemove := range resourcesToRemove {
-		fmt.Printf("Remove %s from terraform state? [y/n]\n", resourceToRemove)
+		input := ""
+
 		for {
-			input, _ := reader.ReadString('\n')
-			input = strings.TrimSpace(input)
+			if *forceDestroy == false {
+				fmt.Printf("Remove %s from terraform state? [y/n]\n", resourceToRemove)
+				input, _ = reader.ReadString('\n')
+				input = strings.TrimSpace(input)
+			} else {
+				input = "y"
+			}
 			if input == "y" {
 				var cmd strings.Builder
 				tfImportCommand := "terraform state rm " + resourceToRemove
