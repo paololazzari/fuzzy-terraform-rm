@@ -54,12 +54,11 @@ func getTerraformResourcesToRemove(working_dir string) []map[string]string {
 
 // get the current working directory
 func getDir() string {
-	ex, err := os.Executable()
-	if err != nil {
-		panic(err)
+	_, filename, _, ok := runtime.Caller(0)
+	if !ok {
+	    panic("Unable to get the current filename")
 	}
-
-	working_dir := filepath.Dir(ex)
+	working_dir := filepath.Dir(filename)
 	return working_dir
 }
 

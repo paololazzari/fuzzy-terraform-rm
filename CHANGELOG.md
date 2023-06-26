@@ -1,5 +1,10 @@
 # Changelog
 
+<a name="v0.1.2"></a>
+## [v0.1.2] - 2023-06-26
+
+- Fix bug where incorrect path was used for tfconfig.loadmodule
+
 <a name="v0.1.1"></a>
 ## [v0.1.1] - 2022-12-22
 
