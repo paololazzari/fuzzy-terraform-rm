@@ -54,12 +54,11 @@ func getTerraformResourcesToRemove(working_dir string) []map[string]string {
 
 // get the current working directory
 func getDir() string {
-	_, filename, _, ok := runtime.Caller(0)
-	if !ok {
-	    panic("Unable to get the current filename")
+	pwd, err := os.Getwd()
+	if err != nil {
+		panic(err)
 	}
-	working_dir := filepath.Dir(filename)
-	return working_dir
+	return pwd
 }
 
 // build the fuzzyfinder menu

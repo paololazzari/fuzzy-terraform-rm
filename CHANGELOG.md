@@ -1,5 +1,10 @@
 # Changelog
 
+<a name="v0.1.3"></a>
+## [v0.1.3] - 2023-06-26
+
+- Use os.getcwd for tfconfig.loadmodule
+
 <a name="v0.1.2"></a>
 ## [v0.1.2] - 2023-06-26
 
