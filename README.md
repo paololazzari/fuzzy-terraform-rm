@@ -9,7 +9,9 @@ It uses the excellent [go-fuzzyfinder](https://github.com/ktr0731/go-fuzzyfinder
 ## Installation
 
 ```bash
-$ go install github.com/paololazzari/fuzzy-terraform-rm@latest
+$ git clone https://github.com/paololazzari/fuzzy-terraform-rm
+$ cd fuzzy-terraform-rm
+$ go build -o /usr/local/bin/
 ```
 
 ## Usage
