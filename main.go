@@ -18,6 +18,8 @@ import (
 	"golang.org/x/exp/slices"
 )
 
+const version = "0.1.0"
+
 type Resource struct {
 	Name     string
 	Filename string
